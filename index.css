@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+}
+
+.portf-title {
+  font-size: 38px;
+  margin: 40px 0 0 0;
+  text-align: center;
+}
+.portf-description {
+  font-size: 24px;
+  margin: 7px 0 0 0;
+  text-align: center;
+}
+.contenedor-portf {
+  margin-top: 20px;
+  /*  width: 370px; */
+  padding: 40px;
+  display: grid;
+}
+
+@media (min-width: 960px) {
+  .contenedor-portf {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.portf-img {
+  height: 255px;
+  object-fit: cover;
+}
+.portf-card {
+  border: solid 2px black;
+  border-radius: 4px;
+}
+.portf-card-content {
+  padding: 20px;
+}
+.card-title {
+  font-size: 30px;
+  margin: 0;
+}
+.card-text-content {
+  margin: 0;
+}
+.card-link {
+  color: #51aff3;
+  display: block;
+  text-align: right;
+  margin-top: 20px;
+}
