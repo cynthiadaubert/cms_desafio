@@ -5,6 +5,7 @@
 body {
   font-family: "Poppins", sans-serif;
   font-size: 18px;
+  background-color: rgb(255, 224, 246);
 }
 
 .portf-title {
@@ -22,6 +23,13 @@ body {
   /*  width: 370px; */
   padding: 40px;
   display: grid;
+  gap: 30px;
+}
+
+@media (min-width: 600px) {
+  .contenedor-portf {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (min-width: 960px) {
@@ -35,8 +43,9 @@ body {
   object-fit: cover;
 }
 .portf-card {
-  border: solid 2px black;
+  border: solid 2px rgb(87, 34, 184);
   border-radius: 4px;
+  background-color: rgb(255, 255, 255);
 }
 .portf-card-content {
   padding: 20px;

@@ -18,20 +18,37 @@ function addWorkCard(parameters = {}) {
 /* *DEVUELVE EL ARRAY CON OBJETOS QUE VAMOS A PASAR AL ADDWORDCARD* */
 function getWorks() {
   return fetch(
-    "https://cnd.contentful.com/spaces/zo7euwrtovoc/environments/master/entries?access_token=bm_FCTa7YGpnFNbn-4rRu8bQ9wtpSpRSEBPPp6NDWh0&content_type=works"
+    "https://cdn.contentful.com/spaces/zo7euwrtovoc/environments/master/entries?access_token=bm_FCTa7YGpnFNbn-4rRu8bQ9wtpSpRSEBPPp6NDWh0&content_type=works&order=sys.createdAt"
   )
     .then((res) => {
       return res.json();
     })
     .then((data) => {
       const fieldsCollection = data.items.map((item) => {
-        return {
+        const obj = {
           title: item.fields.titulo,
-          description: item.fields.descripcion,
+          description: item.fields.description,
+          url: item.fields.url,
+          imageId: item.fields.image.sys.id,
+          includes: data.includes.Asset,
         };
+
+        return obj;
+      });
+
+      fieldsCollection.forEach((e) => {
+        let id = asset(e.imageId, e.includes);
+        e.image = "https:" + id.fields.file.url;
       });
       return fieldsCollection;
     });
+}
+
+function asset(assetId, includes) {
+  const found = includes.find((e) => {
+    return e.sys.id == assetId;
+  });
+  return found;
 }
 
 function main() {
